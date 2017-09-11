@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 
+import SondaLista from './sonda_lista'
+import Configuracao from './configuracao'
+import Plano from './plano'
+
 export default class App extends Component {
   render() {
     return (
       <div>
-        <h1>Hello, Redux Boilerplate</h1>
-        <hr/>
-        <p>
-          This is a sample application made with React+Redux, compiled with webpack and babel.
-        </p>
+        <Configuracao/>
+        <SondaLista/>
+        <Plano width="6" height="5"/>
       </div>
     );
   }

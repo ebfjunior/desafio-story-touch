@@ -1,7 +1,10 @@
 import { combineReducers } from 'redux';
+import SondasReducer from './sondas_reducer';
+import ConfigReducer from './config_reducer';
 
 const rootReducer = combineReducers({
-  state: (state = {}) => state
+  sondas: SondasReducer,
+  config: ConfigReducer
 });
 
 export default rootReducer;
