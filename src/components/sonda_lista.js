@@ -1,17 +1,17 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
-import SondaItem from './sonda_item'
+import SondaItem from "./sonda_item";
 
 class SondaLista extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
 
     this.renderSonda = this.renderSonda.bind(this);
   }
-  renderSonda(sonda, index){
-    return(<SondaItem key={index} sonda={sonda}/>);
+  renderSonda(sonda, index) {
+    return <SondaItem key={index} sonda={sonda} />;
   }
   render() {
     return (
@@ -23,8 +23,8 @@ class SondaLista extends Component {
   }
 }
 
-function mapStateToProps({sondas}) {
-  return {sondas}
+function mapStateToProps({ sondas }) {
+  return { sondas };
 }
 
 export default connect(mapStateToProps)(SondaLista);

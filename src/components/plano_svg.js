@@ -12,13 +12,13 @@ class PlanoSVG extends Component {
     this.renderSonda = this.renderSonda.bind(this);
   }
   width() {
-    return this.props.config.width * this._size * 2;
+    return this.props.config.width * this._size + this._size;
   }
   height() {
-    return this.props.config.height * this._size * 2;
+    return this.props.config.height * this._size + this._size;
   }
   origem_x() {
-    return this.props.config.width * this._size;
+    return 0;
   }
   origem_y() {
     return this.props.config.height * this._size;
@@ -43,7 +43,7 @@ class PlanoSVG extends Component {
       >
         <defs>
           <pattern
-            id="smallGrid"
+            id="grid"
             width={this._size}
             height={this._size}
             patternUnits="userSpaceOnUse"
@@ -51,26 +51,8 @@ class PlanoSVG extends Component {
             <path
               d={`M ${this._size} 0 L 0 0 0 ${this._size}`}
               fill="none"
-              stroke="gray"
+              stroke="#333"
               strokeWidth="0.5"
-            />
-          </pattern>
-          <pattern
-            id="grid"
-            width={this.width() / 2}
-            height={this.height() / 2}
-            patternUnits="userSpaceOnUse"
-          >
-            <rect
-              width={this.width() / 2}
-              height={this.height() / 2}
-              fill="url(#smallGrid)"
-            />
-            <path
-              d={`M ${this.width() / 2} 0 L 0 0 0 ${this.height() / 2}`}
-              fill="none"
-              stroke="gray"
-              strokeWidth="2"
             />
           </pattern>
         </defs>

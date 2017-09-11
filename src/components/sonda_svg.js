@@ -15,8 +15,6 @@ class SondaSVG extends Component {
     const { x } = this.props.sonda;
     let position = x * this._size + origem_x;
 
-    if (x > 0) position -= this._size;
-
     return position;
   }
   y() {
@@ -24,11 +22,16 @@ class SondaSVG extends Component {
     const { y } = this.props.sonda;
     let position = y * this._size * -1 + origem_y;
 
-    if (y < 0) position -= this._size;
-
     return position;
   }
   render() {
+    const mapDirectionToBorder = {
+      N: "Top",
+      S: "Bottom",
+      E: "Right",
+      W: "Left"
+    };
+
     return (
       <svg
         width={this._size}
@@ -37,7 +40,18 @@ class SondaSVG extends Component {
         y={this.y()}
         xmlns="http://www.w3.org/2000/svg"
       >
-        <rect width={this._size} height={this._size} fill="black" />
+        <rect
+          width={this._size}
+          height={this._size}
+          fill="#555"
+          rx="5"
+          ry="5"
+          style={{
+            [`border${mapDirectionToBorder[
+              this.props.sonda.direcao
+            ]}`]: "1px solid #222299"
+          }}
+        />
       </svg>
     );
   }
