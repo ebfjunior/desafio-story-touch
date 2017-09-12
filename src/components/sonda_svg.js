@@ -5,22 +5,22 @@ class SondaSVG extends Component {
   constructor(props) {
     super(props);
 
-    this._size = 40;
+    this._size = this.props.config.size;
 
     this.x = this.x.bind(this);
     this.y = this.y.bind(this);
   }
   x() {
     const [origem_x, origem_y] = this.props.origem;
-    const { x } = this.props.sonda;
-    let position = x * this._size + origem_x;
+    const { currentX } = this.props.sonda;
+    let position = currentX * this._size + origem_x;
 
     return position;
   }
   y() {
     const [origem_x, origem_y] = this.props.origem;
-    const { y } = this.props.sonda;
-    let position = y * this._size * -1 + origem_y;
+    const { currentY } = this.props.sonda;
+    let position = currentY * this._size * -1 + origem_y;
 
     return position;
   }
