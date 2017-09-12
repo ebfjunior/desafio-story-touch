@@ -5,47 +5,30 @@ export default class Sonda {
     this._direcao = this._currentDirecao = direcao;
     this._comandos = comandos;
   }
-  right(){
-    const mapDirections = {"N" : "E", "E" : "S", "S" : "W", "W" : "N"};
+  right() {
+    const mapDirections = { N: "E", E: "S", S: "W", W: "N" };
     this.currentDirecao = mapDirections[this.currentDirecao];
   }
-  left(){
-    const mapDirections = {"N" : "W", "W" : "S", "S" : "E", "E" : "N"};
+  left() {
+    const mapDirections = { N: "W", W: "S", S: "E", E: "N" };
     this.currentDirecao = mapDirections[this.currentDirecao];
   }
-  move(distance){
-    switch(this.currentDirecao){
-      case 'N':
-        this.currentY++;
+  move(config) {
+    switch (this.currentDirecao) {
+      case "N":
+        if (this.currentY + 1 <= config.height) this.currentY++;
         break;
-      case 'E':
-        this.currentX++;
+      case "E":
+        if (this.currentX + 1 <= config.width) this.currentX++;
         break;
-      case 'S':
-        this.currentY--;
+      case "S":
+        if (this.currentY - 1 >= config.height) this.currentY--;
         break;
-      case 'W':
-        this.currentX--;
+      case "W":
+        if (this.currentX - 1 >= config.width) this.currentX--;
         break;
     }
   }
-  doAction(distancia){
-    for(const comando of this.comandos.split("")){
-      switch(comando){
-        case "L":
-          this.left();
-          break;
-        case "R":
-          this.right();
-          break;
-        case "M":
-          this.move(distancia);
-          break;
-      }
-    }
-  }
-
-
 
   get x() {
     return this._x;

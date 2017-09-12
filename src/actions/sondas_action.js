@@ -1,4 +1,4 @@
-import Sonda from '../business/sonda';
+import Sonda from "../business/sonda";
 
 export const ADICIONAR_SONDA = "ADICIONAR_SONDA";
 export const SONDA_MOVE = "SONDA_MOVE";
@@ -13,23 +13,23 @@ export function adicionarSonda(params) {
   };
 }
 
-export function sondaMove(index, sonda, distancia){
+export function sondaMove(index, sonda, config) {
   return {
     type: SONDA_MOVE,
-    payload: {index, sonda, distancia}
+    payload: { index, sonda, config }
   };
 }
 
-export function sondaLeft(index, sonda){
+export function sondaLeft(index, sonda) {
   return {
     type: SONDA_LEFT,
-    payload: {index, sonda}
+    payload: { index, sonda }
   };
 }
 
-export function sondaRight(index, sonda){
+export function sondaRight(index, sonda) {
   return {
     type: SONDA_RIGHT,
-    payload: {index, sonda}
+    payload: { index, sonda }
   };
 }
