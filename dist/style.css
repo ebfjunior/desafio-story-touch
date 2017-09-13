@@ -1,0 +1,19 @@
+.form-group input,
+.form-group button {
+  margin-top: 5px;
+  margin-right: 10px; }
+
+.configuracao,
+.sonda-item {
+  padding: 10px;
+  background: #ededed;
+  border: 1px solid #dfdfdf;
+  margin-top: 10px; }
+
+.buttons {
+  margin-bottom: 10px; }
+
+.saida {
+  margin: 20px 0; }
+  .saida li {
+    list-style: none; }
