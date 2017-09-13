@@ -1,9 +1,26 @@
-import {CONFIGURAR_PLANO} from '../actions/config_action';
+import {
+  CONFIGURAR_PLANO,
+  INICIAR_SIMULACAO,
+  NOVA_SIMULACAO
+} from "../actions/config_action";
 
-export default function ConfigReducer(state = {configured: false, size: 40}, action){
+export default function ConfigReducer(
+  state = { configured: false, started: false, size: 40 },
+  action
+) {
   switch (action.type) {
     case CONFIGURAR_PLANO:
-      return {...state, ...action.payload, configured: true};
+      return { ...state, ...action.payload, configured: true };
+    case INICIAR_SIMULACAO:
+      return { ...state, started: true };
+    case NOVA_SIMULACAO:
+      return {
+        ...state,
+        started: false,
+        configured: false,
+        width: null,
+        height: null
+      };
   }
   return state;
 }

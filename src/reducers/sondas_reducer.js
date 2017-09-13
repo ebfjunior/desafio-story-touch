@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import _ from "lodash";
 
 import {
   SONDA_ADD,
@@ -6,6 +6,8 @@ import {
   SONDA_LEFT,
   SONDA_RIGHT
 } from "../actions/sondas_action";
+
+import { NOVA_SIMULACAO } from "../actions/config_action";
 
 export default function SondasReducer(state = [], action) {
   switch (action.type) {
@@ -15,11 +17,15 @@ export default function SondasReducer(state = [], action) {
     case SONDA_MOVE:
       var { index, sonda, config, sondas } = action.payload;
 
-      const coordenadas = _.reduce(sondas, (result, value, key) => {
-        (result['x'] || (result['x'] = [])).push(value.currentX);
-        (result['y'] || (result['y'] = [])).push(value.currentY);
-        return result;
-      }, {});
+      const coordenadas = _.reduce(
+        sondas,
+        (result, value, key) => {
+          (result["x"] || (result["x"] = [])).push(value.currentX);
+          (result["y"] || (result["y"] = [])).push(value.currentY);
+          return result;
+        },
+        {}
+      );
 
       sonda.move(config, coordenadas);
       return [...state];
@@ -33,6 +39,9 @@ export default function SondasReducer(state = [], action) {
       var { index, sonda } = action.payload;
       sonda.right();
       return [...state];
+      break;
+    case NOVA_SIMULACAO:
+      return [];
       break;
   }
   return state;

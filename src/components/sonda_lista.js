@@ -15,7 +15,7 @@ class SondaLista extends Component {
   }
   render() {
     return (
-      <div>
+      <div style={{ display: this.props.config.configured ? "block" : "none" }}>
         {this.props.sondas.map(this.renderSonda)}
         <SondaItem />
       </div>
@@ -23,8 +23,8 @@ class SondaLista extends Component {
   }
 }
 
-function mapStateToProps({ sondas }) {
-  return { sondas };
+function mapStateToProps({ sondas, config }) {
+  return { sondas, config };
 }
 
 export default connect(mapStateToProps)(SondaLista);
