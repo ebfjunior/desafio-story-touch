@@ -1,5 +1,7 @@
+import _ from 'lodash';
+
 import {
-  ADICIONAR_SONDA,
+  SONDA_ADD,
   SONDA_MOVE,
   SONDA_LEFT,
   SONDA_RIGHT
@@ -7,12 +9,19 @@ import {
 
 export default function SondasReducer(state = [], action) {
   switch (action.type) {
-    case ADICIONAR_SONDA:
+    case SONDA_ADD:
       return [...state, action.payload];
       break;
     case SONDA_MOVE:
-      var { index, sonda, config } = action.payload;
-      sonda.move(config);
+      var { index, sonda, config, sondas } = action.payload;
+
+      const coordenadas = _.reduce(sondas, (result, value, key) => {
+        (result['x'] || (result['x'] = [])).push(value.currentX);
+        (result['y'] || (result['y'] = [])).push(value.currentY);
+        return result;
+      }, {});
+
+      sonda.move(config, coordenadas);
       return [...state];
       break;
     case SONDA_LEFT:

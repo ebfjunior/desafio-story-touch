@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 export default class Sonda {
   constructor({ x, y, direcao, comandos }) {
     this._x = this._currentX = parseInt(x, 10);
@@ -13,69 +15,83 @@ export default class Sonda {
     const mapDirections = { N: "W", W: "S", S: "E", E: "N" };
     this.currentDirecao = mapDirections[this.currentDirecao];
   }
-  move(config) {
+  move(config, coordenadas) {
+    let {currentX : newX, currentY : newY} = this;
+
     switch (this.currentDirecao) {
       case "N":
-        if (this.currentY + 1 <= config.height) this.currentY++;
-        break;
+      newY++;
+      break;
       case "E":
-        if (this.currentX + 1 <= config.width) this.currentX++;
-        break;
+      newX++;
+      break;
       case "S":
-        if (this.currentY - 1 >= config.height) this.currentY--;
-        break;
+      newY--;
+      break;
       case "W":
-        if (this.currentX - 1 >= config.width) this.currentX--;
-        break;
+      newX--;
+      break;
     }
-  }
 
-  get x() {
-    return this._x;
+    delete coordenadas.x[coordenadas.x.indexOf(this.currentX)];
+    delete coordenadas.y[coordenadas.y.indexOf(this.currentY)];
+    
+    if(
+       (newX >= 0 && newX <= config.width) &&
+       (newY >= 0 && newY <= config.height) &&
+       (coordenadas.x.indexOf(newX) == -1 || coordenadas.y.indexOf(newY) == -1)
+       ){
+      this.currentX = newX;
+    this.currentY = newY;
   }
-  set x(x) {
-    this._x = x;
-  }
+}
 
-  get currentX() {
-    return this._currentX;
-  }
-  set currentX(currentX) {
-    this._currentX = currentX;
-  }
+get x() {
+  return this._x;
+}
+set x(x) {
+  this._x = x;
+}
 
-  get y() {
-    return this._y;
-  }
-  set y(y) {
-    this._y = y;
-  }
+get currentX() {
+  return this._currentX;
+}
+set currentX(currentX) {
+  this._currentX = currentX;
+}
 
-  get currentY() {
-    return this._currentY;
-  }
-  set currentY(currentY) {
-    this._currentY = currentY;
-  }
+get y() {
+  return this._y;
+}
+set y(y) {
+  this._y = y;
+}
 
-  get direcao() {
-    return this._direcao;
-  }
-  set direcao(direcao) {
-    this._direcao = direcao;
-  }
+get currentY() {
+  return this._currentY;
+}
+set currentY(currentY) {
+  this._currentY = currentY;
+}
 
-  get currentDirecao() {
-    return this._currentDirecao;
-  }
-  set currentDirecao(currentDirecao) {
-    this._currentDirecao = currentDirecao;
-  }
+get direcao() {
+  return this._direcao;
+}
+set direcao(direcao) {
+  this._direcao = direcao;
+}
 
-  get comandos() {
-    return this._comandos;
-  }
-  set comandos(comandos) {
-    this._comandos = comandos;
-  }
+get currentDirecao() {
+  return this._currentDirecao;
+}
+set currentDirecao(currentDirecao) {
+  this._currentDirecao = currentDirecao;
+}
+
+get comandos() {
+  return this._comandos;
+}
+set comandos(comandos) {
+  this._comandos = comandos;
+}
 }

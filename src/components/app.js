@@ -32,7 +32,7 @@ class App extends Component {
             await sleep(100);
             break;
           case "M":
-            this.props.sondaMove(index, sonda, this.props.config);
+            this.props.sondaMove(index, sonda, this.props.config, this.props.sondas);
             await sleep(100);
             break;
         }
@@ -45,7 +45,7 @@ class App extends Component {
         <Configuracao />
         <SondaLista />
         <PlanoSVG />
-        <button type="button" className="btn btn-danger" onClick={this.simular}>
+        <button type="button" className="btn btn-success" onClick={this.simular}>
           Simular
         </button>
       </div>

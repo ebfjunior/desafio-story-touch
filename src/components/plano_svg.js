@@ -24,7 +24,6 @@ class PlanoSVG extends Component {
     return this.props.config.height * this._size;
   }
   renderSonda(sonda, index) {
-    console.log(sonda);
     return (
       <SondaSVG
         sonda={sonda}
