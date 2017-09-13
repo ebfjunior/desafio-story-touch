@@ -46,7 +46,7 @@ class Buttons extends Component {
   }
   render() {
     return (
-      <div className="buttons">
+      <div className="buttons form-group">
         <button
           type="button"
           className="btn btn-success"
@@ -65,10 +65,7 @@ class Buttons extends Component {
           type="button"
           className="btn btn-primary"
           style={{
-            display:
-              this.props.config.configured && this.props.config.started
-                ? "inline"
-                : "none"
+            display: this.props.config.configured ? "inline" : "none"
           }}
           onClick={this.props.novaSimulacao}
         >
