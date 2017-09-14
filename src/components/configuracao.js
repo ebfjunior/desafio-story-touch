@@ -8,24 +8,44 @@ class Configuracao extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { width: null, height: null, configured: false };
+    this.state = { width: "", height: "", configured: false, errors: [] };
 
     this.onInputChange = this.onInputChange.bind(this);
     this.configurarPlano = this.configurarPlano.bind(this);
+    this.renderErrors = this.renderErrors.bind(this);
+  }
+  validate(){
+    this.setState({errors: []});
+    let errors = [];
+    
+    if(parseInt(this.state.width, 10) < 0) errors.push("A largura do platô deve ser maior que zero");
+    if(parseInt(this.state.height, 10) < 0) errors.push("A altura do platô deve ser maior que zero");
+    if(!this.state.width) errors.push("A largura do platô é obrigatória");
+    if(!this.state.height) errors.push("A altura do platô é obrigatória");
+
+    this.setState({errors});
+
+    return !errors.length;
   }
   onInputChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
+    this.setState({ [e.target.name]: e.target.value.trim() });
   }
   configurarPlano(e) {
-    this.setState({ configured: true });
-    this.props.configurarPlano(this.state);
+    if(this.validate()){
+      this.setState({ configured: true });
+      this.props.configurarPlano(this.state);  
+    }
+    
+  }
+  renderErrors(error, index){
+    return (<div key={index} className="text-danger errors">{error}</div>);
   }
   render() {
     return (
-      <div className="configuracao text-center">
-        <h3>SONDAS DE MARTE</h3>
-        <div className="form-group form-inline">
-          <input
+            <div className="configuracao text-center">
+            <h3>SONDAS DE MARTE</h3>
+            <div className="form-group form-inline">
+            <input
             type="number"
             name="width"
             value={this.props.config.width}
@@ -33,8 +53,8 @@ class Configuracao extends Component {
             placeholder="Largura"
             onChange={this.onInputChange}
             disabled={this.props.config.configured}
-          />
-          <input
+            />
+            <input
             type="number"
             name="height"
             value={this.props.config.height}
@@ -42,18 +62,19 @@ class Configuracao extends Component {
             placeholder="Altura"
             onChange={this.onInputChange}
             disabled={this.props.config.configured}
-          />
-          <button
+            />
+            <button
             type="button"
             className="btn btn-primary"
             onClick={this.configurarPlano}
             disabled={this.props.config.configured}
-          >
+            >
             Configurar
-          </button>
-        </div>
-      </div>
-    );
+            </button>
+            </div>
+            {this.state.errors.map(this.renderErrors)}
+            </div>
+            );
   }
 }
 

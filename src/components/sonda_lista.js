@@ -17,7 +17,7 @@ class SondaLista extends Component {
     return (
       <div style={{ display: this.props.config.configured ? "block" : "none" }}>
         {this.props.sondas.map(this.renderSonda)}
-        <SondaItem />
+        <SondaItem started={this.props.config.started}/>
       </div>
     );
   }
