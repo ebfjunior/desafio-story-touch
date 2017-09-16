@@ -18,8 +18,8 @@ export default function ConfigReducer(
         ...state,
         started: false,
         configured: false,
-        width: null,
-        height: null
+        width: "",
+        height: ""
       };
   }
   return state;

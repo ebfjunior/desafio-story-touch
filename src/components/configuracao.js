@@ -48,7 +48,7 @@ class Configuracao extends Component {
             <input
             type="number"
             name="width"
-            value={this.props.config.width}
+            value={this.state.width}
             className="width-input form-control"
             placeholder="Largura"
             onChange={this.onInputChange}
@@ -57,7 +57,7 @@ class Configuracao extends Component {
             <input
             type="number"
             name="height"
-            value={this.props.config.height}
+            value={this.state.height}
             className="height-input form-control"
             placeholder="Altura"
             onChange={this.onInputChange}

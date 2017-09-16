@@ -53,10 +53,10 @@ class SondaItem extends Component {
   render() {
     return (
       <div className="form-group form-inline sonda-item" style={{display: (!this.props.sonda && this.props.started ? "none" : "block") }}>
-        <input type="number" name="x" value={this.state.x} className="x-input form-control" placeholder="Coordenada X" onChange={this.onInputChange} disabled={this.props.sonda}/>
-        <input type="number" name="y" value={this.state.y} className="y-input form-control" placeholder="Coordenada Y" onChange={this.onInputChange} disabled={this.props.sonda}/>
-        <input type="text" name="direcao" value={this.state.direcao} maxLength="1" className="direcao-input form-control" placeholder="Direção (N, S, E, W)" onChange={this.onInputChange} disabled={this.props.sonda}/>
-        <input type="text" name="comandos" value={this.state.comandos} className="comandos-input form-control" size="40" placeholder="L: Esquerda | R: Direita | M: Frente" onChange={this.onInputChange} disabled={this.props.sonda}/>
+        <input type="number" name="x" value={this.state.x} className="x-input form-control" placeholder="Coordenada X" onChange={this.onInputChange} disabled={!!this.props.sonda}/>
+        <input type="number" name="y" value={this.state.y} className="y-input form-control" placeholder="Coordenada Y" onChange={this.onInputChange} disabled={!!this.props.sonda}/>
+        <input type="text" name="direcao" value={this.state.direcao} maxLength="1" className="direcao-input form-control" placeholder="Direção (N, S, E, W)" onChange={this.onInputChange} disabled={!!this.props.sonda}/>
+        <input type="text" name="comandos" value={this.state.comandos} className="comandos-input form-control" size="40" placeholder="L: Esquerda | R: Direita | M: Frente" onChange={this.onInputChange} disabled={!!this.props.sonda}/>
         <button type="button" className="btn btn-primary" onClick={this.adicionarSonda} style={{display: (this.props.sonda ? 'none' : 'inline')}}>Adicionar</button>
         {this.state.errors.map(this.renderErrors)}
       </div>

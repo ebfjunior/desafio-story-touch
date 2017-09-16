@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 export default class Sonda {
   constructor({ x, y, direcao, comandos }) {
     this._x = this._currentX = parseInt(x, 10);
@@ -15,7 +13,7 @@ export default class Sonda {
     const mapDirections = { N: "W", W: "S", S: "E", E: "N" };
     this.currentDirecao = mapDirections[this.currentDirecao];
   }
-  move(config, coordenadas) {
+  move(config = {}, coordenadas = {}) {
     let {currentX : newX, currentY : newY} = this;
 
     switch (this.currentDirecao) {
@@ -33,15 +31,20 @@ export default class Sonda {
       break;
     }
 
-    delete coordenadas.x[coordenadas.x.indexOf(this.currentX)];
-    delete coordenadas.y[coordenadas.y.indexOf(this.currentY)];
-    
-    if(
-       (newX >= 0 && newX <= config.width) &&
-       (newY >= 0 && newY <= config.height) &&
-       (coordenadas.x.indexOf(newX) == -1 || coordenadas.y.indexOf(newY) == -1)
-       ){
-      this.currentX = newX;
+    if(Object.keys(coordenadas).length){
+      delete coordenadas.x[coordenadas.x.indexOf(this.currentX)];
+      delete coordenadas.y[coordenadas.y.indexOf(this.currentY)];
+
+      if(
+         (newX >= 0 && newX <= config.width) &&
+         (newY >= 0 && newY <= config.height) &&
+         (coordenadas.x.indexOf(newX) == -1 || coordenadas.y.indexOf(newY) == -1)
+         ){
+        this.currentX = newX;
+      this.currentY = newY;
+    }
+  }else{
+    this.currentX = newX;
     this.currentY = newY;
   }
 }

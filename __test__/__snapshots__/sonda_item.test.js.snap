@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Deve renderizar corretamente 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(SondaItem)>
+    <SondaItem
+      adicionarSonda={[Function]}
+    >
+      <div
+        className="form-group form-inline sonda-item"
+        style={
+          Object {
+            "display": "block",
+          }
+        }
+      >
+        <input
+          className="x-input form-control"
+          disabled={false}
+          name="x"
+          onChange={[Function]}
+          placeholder="Coordenada X"
+          type="number"
+          value=""
+        />
+        <input
+          className="y-input form-control"
+          disabled={false}
+          name="y"
+          onChange={[Function]}
+          placeholder="Coordenada Y"
+          type="number"
+          value=""
+        />
+        <input
+          className="direcao-input form-control"
+          disabled={false}
+          maxLength="1"
+          name="direcao"
+          onChange={[Function]}
+          placeholder="Direção (N, S, E, W)"
+          type="text"
+          value=""
+        />
+        <input
+          className="comandos-input form-control"
+          disabled={false}
+          name="comandos"
+          onChange={[Function]}
+          placeholder="L: Esquerda | R: Direita | M: Frente"
+          size="40"
+          type="text"
+          value=""
+        />
+        <button
+          className="btn btn-primary"
+          onClick={[Function]}
+          style={
+            Object {
+              "display": "inline",
+            }
+          }
+          type="button"
+        >
+          Adicionar
+        </button>
+      </div>
+    </SondaItem>
+  </Connect(SondaItem)>
+</Provider>
+`;

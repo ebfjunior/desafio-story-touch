@@ -6,13 +6,25 @@
   "repository": "git@github.com:ebfjunior/redux-boilerplate.git",
   "scripts": {
     "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.config.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
     "build:development": "webpack --config webpack.config.js",
     "build:production": "cross-env NODE_ENV=production webpack --config webpack.config.js"
+  },
+  "jest": {
+    "setupFiles": [
+      "./__test__/jestsetup.js"
+    ],
+    "snapshotSerializers": [
+      "<rootDir>/node_modules/enzyme-to-json/serializer"
+    ]
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.2.1",
+    "babel-jest": "^21.0.2",
     "babel-loader": "^6.2.0",
     "babel-plugin-transform-async-to-generator": "^6.24.1",
     "babel-polyfill": "^6.26.0",
@@ -23,19 +35,25 @@
     "cross-env": "^5.0.5",
     "css-loader": "^0.28.6",
     "dedupe-plugin": "^1.0.0",
+    "enzyme": "^2.9.1",
+    "enzyme-to-json": "^1.6.0",
     "extract-text-webpack-plugin": "^2.1.2",
+    "jest": "^21.1.0",
     "jquery": "^2.2.1",
     "jsdom": "^8.1.0",
     "node-sass": "^4.5.3",
+    "react-addons-test-utils": "^15.6.0",
+    "react-test-renderer": "^15.6.1",
+    "redux-mock-store": "^1.3.0",
     "sass-loader": "^6.0.6",
     "webpack": "^2.7.0",
     "webpack-dev-server": "^2.7.1"
   },
   "dependencies": {
     "lodash": "^3.10.1",
-    "react": "^0.14.9",
-    "react-dom": "^0.14.3",
-    "react-redux": "4.3.0",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-redux": "^5.0.6",
     "react-router": "^2.0.1",
     "redux": "^3.0.4"
   }
